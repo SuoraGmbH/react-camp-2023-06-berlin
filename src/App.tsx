@@ -1,6 +1,7 @@
 import TimeEntryView from "./components/TimeEntryView";
 import React from "react";
 import TimeEntry from "./domain/TimeEntry";
+import TimeEntryForm from "./components/TimeEntryForm";
 
 export default function App() {
   // So können wir den typen *einer* bestimmten Prop inferieren
@@ -16,6 +17,7 @@ export default function App() {
     <>
       <h1>Hallo react-camp!</h1>
       <TimeEntryView timeEntry={timeEntry} />
+      <TimeEntryForm />
     </>
   );
 }
