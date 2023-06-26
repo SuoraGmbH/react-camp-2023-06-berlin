@@ -3,6 +3,8 @@ import React from "react";
 import TimeEntry from "./domain/TimeEntry";
 
 export default function App() {
+  // So können wir den typen *einer* bestimmten Prop inferieren
+  // const timeEntry: React.ComponentProps<typeof TimeEntryView>["timeEntry"] = {
   const timeEntry: TimeEntry = {
     start: new Date(),
     end: new Date(),
