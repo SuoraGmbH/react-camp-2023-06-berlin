@@ -1,10 +1,15 @@
 import TimeEntryView from "./components/TimeEntryView";
+import React from "react";
 
 export default function App() {
+  const timeEntryViewProps: React.ComponentProps<typeof TimeEntryView> = {
+    comment: "React ist knorke!",
+  };
+
   return (
-    <div>
+    <>
       <h1>Hallo react-camp!</h1>
-      <TimeEntryView comment="react ist knorke!" />
-    </div>
+      <TimeEntryView {...timeEntryViewProps} />
+    </>
   );
 }
