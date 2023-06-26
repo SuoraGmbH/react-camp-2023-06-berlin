@@ -2,6 +2,7 @@ import TimeEntryView from "./components/TimeEntryView";
 import React from "react";
 import TimeEntry from "./domain/TimeEntry";
 import TimeEntryForm from "./components/TimeEntryForm";
+import Counter from "./components/Counter";
 
 export default function App() {
   // So können wir den typen *einer* bestimmten Prop inferieren
@@ -18,6 +19,10 @@ export default function App() {
       <h1>Hallo react-camp!</h1>
       <TimeEntryView timeEntry={timeEntry} />
       <TimeEntryForm />
+      <Counter />
+      <Counter />
+      <Counter />
+      <Counter />
     </>
   );
 }
