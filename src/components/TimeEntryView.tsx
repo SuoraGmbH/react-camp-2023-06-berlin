@@ -1,8 +1,11 @@
+import React from "react";
 
 interface Props {
     comment: string;
 }
 
-export default function TimeEntryView(props: Props) {
-    return <div>{props.comment}</div>
+const TimeEntryView: React.FunctionComponent<Props> = ({comment}) => {
+    return <div>{comment}</div>
 }
+
+export default TimeEntryView
