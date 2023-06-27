@@ -16,6 +16,7 @@ const TimeEntryForm: React.FunctionComponent<Props> = ({ onAddTimeEntry }) => {
       start: new Date(),
       end: new Date(),
     });
+    setInputValue("");
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -24,7 +25,7 @@ const TimeEntryForm: React.FunctionComponent<Props> = ({ onAddTimeEntry }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} />
+      <input onChange={handleChange} value={inputValue} />
       {inputValue}
       <button type="submit">Absenden</button>
     </form>
