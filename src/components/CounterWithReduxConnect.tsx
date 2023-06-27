@@ -22,17 +22,23 @@ const CounterWithReduxConnect: React.FunctionComponent<Props> = ({
   );
 };
 
+// Das hier sind sog. "Action Creators"
+const increment = () => {
+  return { type: "Increment" };
+};
+const decrement = () => {
+  return { type: "Increment" };
+};
+
 const ConnectedComponent = connect(
   (state: any) => {
     return {
       count: state.count,
     };
   },
-  (dispatch) => {
-    return {
-      onIncrement: () => dispatch({ type: "Increment" }),
-      onDecrement: () => dispatch({ type: "Decrement" }),
-    };
+  {
+    onIncrement: increment,
+    onDecrement: decrement,
   }
 )(CounterWithReduxConnect);
 
