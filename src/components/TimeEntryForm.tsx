@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ArrayComponent from "../typescript/ArrayComponent";
 
 const TimeEntryForm: React.FunctionComponent = () => {
   const [inputValue, setInputValue] = useState("");
@@ -14,6 +15,7 @@ const TimeEntryForm: React.FunctionComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <ArrayComponent />
       <input onChange={handleChange} />
       {inputValue}
       <button type="submit">Absenden</button>
