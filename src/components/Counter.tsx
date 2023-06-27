@@ -10,7 +10,9 @@ const Counter: React.FunctionComponent = () => {
   return (
     <div>
       <p>Current Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount((prevCount) => prevCount + 1)}>
+        Increment
+      </button>
     </div>
   );
 };
