@@ -15,7 +15,6 @@ const TimeEntryForm: React.FunctionComponent = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ArrayComponent />
       <input onChange={handleChange} />
       {inputValue}
       <button type="submit">Absenden</button>

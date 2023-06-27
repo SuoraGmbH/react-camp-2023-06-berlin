@@ -16,13 +16,8 @@ export default function App() {
 
   return (
     <>
-      <h1>Hallo react-camp!</h1>
       <TimeEntryView timeEntry={timeEntry} />
       <TimeEntryForm />
-      <Counter />
-      <Counter />
-      <Counter />
-      <Counter />
     </>
   );
 }
