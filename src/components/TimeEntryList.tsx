@@ -2,13 +2,11 @@ import React from "react";
 import TimeEntry from "../domain/TimeEntry";
 import TimeEntryView from "./TimeEntryView";
 
-const TimeEntryList: React.FunctionComponent = () => {
-  const timeEntries: TimeEntry[] = [
-    { id: "1", comment: "Hi", start: new Date(), end: new Date() },
-    { id: "2", comment: "Hallo", start: new Date(), end: new Date() },
-    { id: "3", comment: "Hello", start: new Date(), end: new Date() },
-  ];
+interface Props {
+  timeEntries: TimeEntry[];
+}
 
+const TimeEntryList: React.FunctionComponent<Props> = ({ timeEntries }) => {
   return (
     <div>
       {timeEntries.map((timeEntry) => {

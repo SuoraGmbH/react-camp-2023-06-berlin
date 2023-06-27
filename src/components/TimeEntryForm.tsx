@@ -1,12 +1,21 @@
 import React, { useState } from "react";
-import ArrayComponent from "../typescript/ArrayComponent";
+import TimeEntry from "../domain/TimeEntry";
 
-const TimeEntryForm: React.FunctionComponent = () => {
+interface Props {
+  onAddTimeEntry: (timeEntry: TimeEntry) => void;
+}
+
+const TimeEntryForm: React.FunctionComponent<Props> = ({ onAddTimeEntry }) => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
-    console.log("Hello World");
+    onAddTimeEntry({
+      id: new Date().toISOString(),
+      comment: inputValue,
+      start: new Date(),
+      end: new Date(),
+    });
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {

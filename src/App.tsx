@@ -1,5 +1,5 @@
 import TimeEntryView from "./components/TimeEntryView";
-import React from "react";
+import React, { useState } from "react";
 import TimeEntry from "./domain/TimeEntry";
 import TimeEntryForm from "./components/TimeEntryForm";
 import Counter from "./components/Counter";
@@ -15,11 +15,17 @@ export default function App() {
     id: "sdhiaj9das9udjsaj9ußdsa",
   };
 
+  const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
+
+  const handleAddTimeEntry = (timeEntry: TimeEntry) => {
+    setTimeEntries((prevTimeEntries) => [...prevTimeEntries, timeEntry]);
+  };
+
   return (
     <>
       <TimeEntryView timeEntry={timeEntry} />
-      <TimeEntryForm />
-      <TimeEntryList />
+      <TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />
+      <TimeEntryList timeEntries={timeEntries} />
     </>
   );
 }
