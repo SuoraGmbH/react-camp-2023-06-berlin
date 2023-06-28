@@ -10,17 +10,10 @@ const GithubRepoStats: React.FunctionComponent = () => {
   const [stargazersCount, setStargazersCount] = useState<number>();
 
   useEffect(() => {
-    const data = fetch("https://api.github.com/repos/facebook/react");
-
-    data.then((response) => {
-      response.json().then((githubRepoInformation) => {
-        console.log(githubRepoInformation);
-
-        setStargazersCount(
-          (stargazersCount) => githubRepoInformation.stargazers_count
-        );
-      });
-    });
+    fetch("https://api.github.com/repos/facebook/react")
+      .then((response) => response.json())
+      .then((body) => body.stargazers_count)
+      .then((stargazersCount) => setStargazersCount(stargazersCount));
   }, []);
 
   if (stargazersCount === undefined) {
