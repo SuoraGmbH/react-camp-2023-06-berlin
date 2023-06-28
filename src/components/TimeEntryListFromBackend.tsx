@@ -6,8 +6,8 @@ import { z } from "zod";
 const TimeEntryBackendSchema = z.object({
   id: z.string(),
   comment: z.string(),
-  start: z.string(),
-  end: z.string(),
+  start: z.coerce.date(),
+  end: z.coerce.date(),
 });
 
 const TimeEntryResponseSchema = z.array(TimeEntryBackendSchema);
@@ -18,17 +18,7 @@ const TimeEntryListFromBackend: React.FunctionComponent = () => {
   useEffect(() => {
     fetch("http://localhost:3001/timeEntries")
       .then((response) => response.json())
-      .then((timeEntries: unknown) => {
-        const parsedTimeEntries = TimeEntryResponseSchema.parse(timeEntries);
-
-        return parsedTimeEntries.map(
-          (timeEntry): TimeEntry => ({
-            ...timeEntry,
-            start: new Date(timeEntry.start),
-            end: new Date(timeEntry.end),
-          })
-        );
-      })
+      .then(TimeEntryResponseSchema.parse)
       .then(setTimeEntries);
   }, []);
 
