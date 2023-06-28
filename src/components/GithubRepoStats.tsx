@@ -24,9 +24,11 @@ const GithubRepoStats: React.FunctionComponent<Props> = ({ repoName }) => {
 
   if (error !== undefined) {
     return (
-      <pre>
+      <div style={{ border: "2px solid pink", padding: 4, margin: 4 }}>
         <b>{error.name}</b>: {error.message}
-      </pre>
+        <br />
+        Error occured for repo {repoName}.
+      </div>
     );
   }
 
@@ -36,7 +38,7 @@ const GithubRepoStats: React.FunctionComponent<Props> = ({ repoName }) => {
 
   return (
     <div>
-      <b>facebook/react</b> hat {stargazersCount.toLocaleString()} Stars
+      <b>{repoName}</b> hat {stargazersCount.toLocaleString()} Stars
     </div>
   );
 };
