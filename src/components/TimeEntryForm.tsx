@@ -6,27 +6,27 @@ interface Props {
 }
 
 const TimeEntryForm: React.FunctionComponent<Props> = ({ onAddTimeEntry }) => {
-  const [inputValue, setInputValue] = useState("");
+  const [comment, setComment] = useState("");
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     onAddTimeEntry({
       id: new Date().toISOString(),
-      comment: inputValue,
+      comment: comment,
       start: new Date(),
       end: new Date(),
     });
-    setInputValue("");
+    setComment("");
   };
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setInputValue(event.target.value);
+    setComment(event.target.value);
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} value={inputValue} />
-      {inputValue}
+      <input onChange={handleChange} value={comment} />
+      {comment}
       <button type="submit">Absenden</button>
     </form>
   );
