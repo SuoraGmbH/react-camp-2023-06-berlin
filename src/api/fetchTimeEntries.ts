@@ -1,4 +1,5 @@
 import { z } from "zod";
+import TimeEntry from "../domain/TimeEntry";
 
 const TimeEntryBackendSchema = z.object({
   id: z.string(),
@@ -9,10 +10,10 @@ const TimeEntryBackendSchema = z.object({
 
 const TimeEntryResponseSchema = z.array(TimeEntryBackendSchema);
 
-const fetchTimeEntries = () => {
-  return fetch("http://localhost:3001/timeEntries")
-    .then((response) => response.json())
-    .then(TimeEntryResponseSchema.parse);
+const fetchTimeEntries = async (): Promise<TimeEntry[]> => {
+  const response = await fetch("http://localhost:3001/timeEntries");
+
+  return TimeEntryResponseSchema.parse(await response.json());
 };
 
 export default fetchTimeEntries;
