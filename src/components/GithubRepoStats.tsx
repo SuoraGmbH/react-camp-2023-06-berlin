@@ -20,7 +20,7 @@ const GithubRepoStats: React.FunctionComponent<Props> = ({ repoName }) => {
       .then((body) => body.stargazers_count)
       .then(setStargazersCount)
       .catch(setError);
-  }, []);
+  }, [repoName]);
 
   if (error !== undefined) {
     return (
