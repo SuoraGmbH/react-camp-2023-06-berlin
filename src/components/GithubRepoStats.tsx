@@ -6,7 +6,8 @@ const GithubRepoStats: React.FunctionComponent = () => {
   useEffect(() => {
     fetch("https://api.github.com/repos/facebook/react")
       .then((response) => response.json())
-      .then((body) => setStargazersCount(body.stargazers_count));
+      .then((body) => body.stargazers_count)
+      .then(setStargazersCount);
   }, []);
 
   if (stargazersCount === undefined) {
