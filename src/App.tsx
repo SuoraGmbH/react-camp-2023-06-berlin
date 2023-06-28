@@ -30,8 +30,8 @@ export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TimeEntryQueryUtils />
-      {/*<TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />*/}
-      {/*<TimeEntryList timeEntries={timeEntries} />*/}
+      <TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />
+      <TimeEntryList timeEntries={timeEntries} />
       <Toggle />
       <GithubRepoStats repoName="facebook/react" />
       {/*<GithubRepoStats repoName="" />*/}
@@ -39,7 +39,7 @@ export default function App() {
       {/*  <DynamicGithubRepoStats />*/}
       {/*</div>*/}
       {/*<hr />*/}
-      <TimeEntryListFromBackend />
+      {/*<TimeEntryListFromBackend />*/}
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );

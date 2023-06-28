@@ -1,7 +1,7 @@
 import { z } from "zod";
 import TimeEntry from "../domain/TimeEntry";
 
-const TimeEntryBackendSchema = z.object({
+export const TimeEntryBackendSchema = z.object({
   id: z.string(),
   comment: z.string(),
   start: z.coerce.date(),

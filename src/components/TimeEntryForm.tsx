@@ -1,32 +1,43 @@
 import React, { useState } from "react";
 import TimeEntry from "../domain/TimeEntry";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
+import { TimeEntryBackendSchema } from "../api/fetchTimeEntries";
 
 interface Props {
   onAddTimeEntry: (timeEntry: TimeEntry) => void;
 }
 
 const TimeEntryForm: React.FunctionComponent<Props> = ({ onAddTimeEntry }) => {
-  const [comment, setComment] = useState("");
-
-  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
-    event.preventDefault();
-    onAddTimeEntry({
-      id: new Date().toISOString(),
-      comment: comment,
-      start: new Date(),
-      end: new Date(),
-    });
-    setComment("");
-  };
-
-  const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    setComment(event.target.value);
-  };
-
+  const { handleSubmit, register, formState } = useForm<{
+    comment: string;
+    start: string;
+    end: string;
+  }>({
+    resolver: zodResolver(
+      TimeEntryBackendSchema.omit({ id: true, comment: true }).extend({
+        comment: z.string().min(4),
+      })
+    ),
+  });
+  console.log(formState.errors);
   return (
-    <form onSubmit={handleSubmit}>
-      <input onChange={handleChange} value={comment} />
-      {comment}
+    <form
+      onSubmit={handleSubmit((values) => {
+        onAddTimeEntry({
+          id: new Date().toISOString(),
+          comment: values.comment,
+          start: new Date(values.start),
+          end: new Date(values.end),
+        });
+      })}
+    >
+      {formState.errors.comment && formState.errors.comment.message}
+      <input {...register("comment")} />
+      <input type="datetime-local" {...register("start")} />
+      <input type="datetime-local" {...register("end")} />
+
       <button type="submit">Absenden</button>
     </form>
   );
