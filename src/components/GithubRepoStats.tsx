@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 
-const GithubRepoStats: React.FunctionComponent = () => {
+interface Props {
+  repoName: string;
+}
+
+const GithubRepoStats: React.FunctionComponent<Props> = ({ repoName }) => {
   const [stargazersCount, setStargazersCount] = useState<number>();
   const [error, setError] = useState<Error>();
 
   useEffect(() => {
-    fetch("https://api.github.com/repos/lacebook/react")
+    fetch(`https://api.github.com/repos/${repoName}`)
       .then((response) => {
         if (response.status !== 200) {
           throw new Error("Received http status " + response.status);

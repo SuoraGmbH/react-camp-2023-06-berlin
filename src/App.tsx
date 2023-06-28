@@ -17,7 +17,8 @@ export default function App() {
     <>
       <TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />
       <TimeEntryList timeEntries={timeEntries} />
-      <GithubRepoStats />
+      <GithubRepoStats repoName="facebook/react" />
+      <GithubRepoStats repoName="" />
     </>
   );
 }
