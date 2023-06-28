@@ -1,10 +1,4 @@
-// https://api.github.com/repos/facebook/react
-
 import React, { useEffect, useState } from "react";
-
-type Something = {
-  a: undefined;
-};
 
 const GithubRepoStats: React.FunctionComponent = () => {
   const [stargazersCount, setStargazersCount] = useState<number>();
