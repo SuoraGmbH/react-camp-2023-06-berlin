@@ -24,15 +24,12 @@ export default function App() {
       {/*<TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />*/}
       {/*<TimeEntryList timeEntries={timeEntries} />*/}
       <GithubRepoStats repoName="facebook/react" />
-      <GithubRepoStats repoName="facebook/react" />
-      <GithubRepoStats repoName="facebook/react" />
-      <GithubRepoStats repoName="facebook/react" />
       {/*<GithubRepoStats repoName="" />*/}
-      <div style={{ border: "3px dashed yellow" }}>
-        <DynamicGithubRepoStats />
-      </div>
+      {/*<div style={{ border: "3px dashed yellow" }}>*/}
+      {/*  <DynamicGithubRepoStats />*/}
+      {/*</div>*/}
       {/*<hr />*/}
-      {/*<TimeEntryListFromBackend />*/}
+      <TimeEntryListFromBackend />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
