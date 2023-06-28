@@ -7,7 +7,7 @@ const TimeEntryBackendSchema = z.object({
   id: z.string(),
   comment: z.string(),
   start: z.string(),
-  end: z.string().datetime(),
+  end: z.string(),
 });
 
 const TimeEntryResponseSchema = z.array(TimeEntryBackendSchema);
