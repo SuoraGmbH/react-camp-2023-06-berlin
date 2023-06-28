@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
-import TimeEntry from "../domain/TimeEntry";
+import React from "react";
 import TimeEntryList from "./TimeEntryList";
 import fetchTimeEntries from "../api/fetchTimeEntries";
+import { useQuery } from "@tanstack/react-query";
 
 const TimeEntryListFromBackend: React.FunctionComponent = () => {
-  const [timeEntries, setTimeEntries] = useState<TimeEntry[]>();
-
-  useEffect(() => {
-    fetchTimeEntries().then(setTimeEntries);
-  }, []);
+  const { data: timeEntries } = useQuery({
+    queryKey: ["timeEntries"],
+    queryFn: fetchTimeEntries,
+  });
 
   if (timeEntries === undefined) {
     return <div>Loading…</div>;

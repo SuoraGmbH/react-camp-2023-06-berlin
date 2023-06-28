@@ -9,8 +9,15 @@ import DynamicGithubRepoStats from "./components/DynamicGithubRepoStats";
 import TimeEntryListFromBackend from "./components/TimeEntryListFromBackend";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import Toggle from "./components/Toggle";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App() {
   const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
@@ -23,6 +30,7 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       {/*<TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />*/}
       {/*<TimeEntryList timeEntries={timeEntries} />*/}
+      <Toggle />
       <GithubRepoStats repoName="facebook/react" />
       {/*<GithubRepoStats repoName="" />*/}
       {/*<div style={{ border: "3px dashed yellow" }}>*/}
