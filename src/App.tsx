@@ -6,6 +6,7 @@ import Counter from "./components/Counter";
 import TimeEntryList from "./components/TimeEntryList";
 import GithubRepoStats from "./components/GithubRepoStats";
 import DynamicGithubRepoStats from "./components/DynamicGithubRepoStats";
+import TimeEntryListFromBackend from "./components/TimeEntryListFromBackend";
 
 export default function App() {
   const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
@@ -24,6 +25,8 @@ export default function App() {
       <div style={{ border: "3px dashed yellow" }}>
         <DynamicGithubRepoStats />
       </div>
+      <hr />
+      <TimeEntryListFromBackend />
     </>
   );
 }
