@@ -19,9 +19,12 @@ fetch("url")
     return body.stargazers_count;
   })
   .then(function (stargazersCount) {
+    // @ts-ignore das gibt es hier nicht
     setStargazersCount(stargazersCount);
   });
 
 fetch("url").then(function (response) {
   response.json().then(function (http) {});
 });
+
+export const foo = "bar";
