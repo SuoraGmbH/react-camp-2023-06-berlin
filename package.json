@@ -59,7 +59,9 @@
     ]
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@total-typescript/ts-reset": "^0.4.2",
+    "orval": "^6.16.0",
     "prettier": "^2.8.3"
   }
 }
