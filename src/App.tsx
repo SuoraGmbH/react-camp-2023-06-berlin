@@ -7,6 +7,10 @@ import TimeEntryList from "./components/TimeEntryList";
 import GithubRepoStats from "./components/GithubRepoStats";
 import DynamicGithubRepoStats from "./components/DynamicGithubRepoStats";
 import TimeEntryListFromBackend from "./components/TimeEntryListFromBackend";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+
+const queryClient = new QueryClient();
 
 export default function App() {
   const [timeEntries, setTimeEntries] = useState<TimeEntry[]>([]);
@@ -16,17 +20,20 @@ export default function App() {
   };
 
   return (
-    <>
-      <TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />
-      <TimeEntryList timeEntries={timeEntries} />
+    <QueryClientProvider client={queryClient}>
+      {/*<TimeEntryForm onAddTimeEntry={handleAddTimeEntry} />*/}
+      {/*<TimeEntryList timeEntries={timeEntries} />*/}
       <GithubRepoStats repoName="facebook/react" />
-      <GithubRepoStats repoName="lacebook/react" />
-      <GithubRepoStats repoName="" />
+      <GithubRepoStats repoName="facebook/react" />
+      <GithubRepoStats repoName="facebook/react" />
+      <GithubRepoStats repoName="facebook/react" />
+      {/*<GithubRepoStats repoName="" />*/}
       <div style={{ border: "3px dashed yellow" }}>
         <DynamicGithubRepoStats />
       </div>
-      <hr />
-      <TimeEntryListFromBackend />
-    </>
+      {/*<hr />*/}
+      {/*<TimeEntryListFromBackend />*/}
+      <ReactQueryDevtools initialIsOpen={false} />
+    </QueryClientProvider>
   );
 }
